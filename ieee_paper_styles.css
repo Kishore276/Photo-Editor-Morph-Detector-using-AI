@@ -1,0 +1,437 @@
+/* IEEE Paper Styles - 2025 Format */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.paper-container {
+    max-width: 8.5in;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    padding: 1in;
+    min-height: 11in;
+}
+
+/* Header */
+.paper-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #0066cc;
+    padding-bottom: 10px;
+}
+
+.conference-info {
+    font-size: 12px;
+    font-weight: bold;
+    color: #0066cc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Title Section */
+.title-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.paper-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    color: #000;
+}
+
+.authors {
+    margin-bottom: 15px;
+}
+
+.author-name {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.affiliations {
+    font-size: 10px;
+    font-style: italic;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Abstract */
+.abstract {
+    margin-bottom: 30px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-left: 4px solid #0066cc;
+}
+
+.abstract h2 {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #0066cc;
+}
+
+.abstract p {
+    font-size: 10px;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+.keywords {
+    font-size: 10px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Main Sections */
+section {
+    margin-bottom: 25px;
+    column-count: 2;
+    column-gap: 20px;
+    column-fill: balance;
+}
+
+.abstract,
+.title-section,
+.paper-header,
+.references,
+.paper-footer {
+    column-count: 1;
+}
+
+h2 {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #0066cc;
+    break-after: avoid;
+}
+
+h3 {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    margin-top: 15px;
+    color: #333;
+    break-after: avoid;
+}
+
+p {
+    font-size: 10px;
+    text-align: justify;
+    margin-bottom: 10px;
+    text-indent: 0.2in;
+}
+
+/* Lists */
+ul, ol {
+    font-size: 10px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+    text-align: justify;
+}
+
+/* Algorithm Boxes */
+.algorithm {
+    background: #f0f8ff;
+    border: 1px solid #0066cc;
+    padding: 15px;
+    margin: 15px 0;
+    font-size: 9px;
+    break-inside: avoid;
+    column-span: all;
+}
+
+.algorithm strong {
+    color: #0066cc;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.algorithm code {
+    font-family: 'Courier New', monospace;
+    line-height: 1.4;
+    display: block;
+    white-space: pre-line;
+}
+
+/* Tables */
+.results-table {
+    margin: 20px 0;
+    break-inside: avoid;
+    column-span: all;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9px;
+    margin: 10px 0;
+}
+
+caption {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #0066cc;
+    text-align: left;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f8ff;
+    font-weight: bold;
+    color: #0066cc;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* References */
+.references {
+    margin-top: 30px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.references h2 {
+    margin-bottom: 15px;
+}
+
+.references ol {
+    font-size: 9px;
+    line-height: 1.4;
+}
+
+.references li {
+    margin-bottom: 8px;
+    text-align: justify;
+}
+
+.references em {
+    font-style: italic;
+}
+
+/* Links */
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.paper-footer {
+    margin-top: 40px;
+    border-top: 2px solid #0066cc;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.footer-info {
+    font-size: 8px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .paper-container {
+        box-shadow: none;
+        margin: 0;
+        padding: 0.75in;
+    }
+    
+    section {
+        break-inside: avoid;
+    }
+    
+    h2, h3 {
+        break-after: avoid;
+    }
+    
+    .algorithm, .results-table {
+        break-inside: avoid;
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .paper-container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    section {
+        column-count: 1;
+    }
+    
+    .paper-title {
+        font-size: 16px;
+    }
+    
+    h2 {
+        font-size: 14px;
+    }
+    
+    h3 {
+        font-size: 12px;
+    }
+    
+    p, ul, ol {
+        font-size: 11px;
+    }
+}
+
+/* Special formatting for code and technical terms */
+code {
+    font-family: 'Courier New', monospace;
+    background-color: #f5f5f5;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 9px;
+}
+
+/* Emphasis styles */
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+/* Superscript for citations */
+sup {
+    font-size: 8px;
+    vertical-align: super;
+}
+
+/* Figure and table numbering */
+.figure-caption, .table-caption {
+    font-size: 9px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+    color: #0066cc;
+}
+
+/* Mathematical expressions */
+.math {
+    font-style: italic;
+    font-family: 'Times New Roman', serif;
+}
+
+/* Highlight boxes for important information */
+.highlight-box {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 4px;
+    font-size: 10px;
+    break-inside: avoid;
+}
+
+/* IEEE Blue color scheme */
+:root {
+    --ieee-blue: #0066cc;
+    --ieee-light-blue: #f0f8ff;
+    --ieee-dark-blue: #004499;
+    --ieee-gray: #666;
+    --ieee-light-gray: #f8f9fa;
+}
+
+/* Smooth transitions for interactive elements */
+a, button {
+    transition: all 0.3s ease;
+}
+
+/* Professional spacing and typography */
+.section-spacing {
+    margin-bottom: 25px;
+}
+
+.subsection-spacing {
+    margin-bottom: 15px;
+}
+
+/* IEEE standard margins and indentation */
+.ieee-indent {
+    text-indent: 0.2in;
+}
+
+.ieee-margin {
+    margin: 0.1in 0;
+}
+
+/* Column break controls */
+.column-break {
+    break-after: column;
+}
+
+.no-break {
+    break-inside: avoid;
+}
+
+/* Professional table styling */
+.professional-table {
+    border: 2px solid var(--ieee-blue);
+    background: white;
+}
+
+.professional-table th {
+    background: var(--ieee-blue);
+    color: white;
+    font-weight: bold;
+}
+
+.professional-table td {
+    border: 1px solid #ddd;
+}
+
+/* Citation styling */
+.citation {
+    color: var(--ieee-blue);
+    font-weight: bold;
+}
+
+/* Technical specifications formatting */
+.tech-spec {
+    font-family: 'Courier New', monospace;
+    background: var(--ieee-light-gray);
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 9px;
+}

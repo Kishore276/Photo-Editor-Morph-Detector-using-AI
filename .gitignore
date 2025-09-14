@@ -1,0 +1,134 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+.venv/
+env/
+.env/
+ENV/
+env.bak/
+venv.bak/
+
+# PyTorch & ML Models (exclude large model files but keep configs)
+*.pth
+*.pt
+*.bin
+models/*/blobs/
+models/*/snapshots/
+models/ateeqq_cache/
+models/ateeqq_final/
+models/ateeqq_only/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Uploads and outputs (temporary files)
+uploads/*.jpg
+uploads/*.jpeg
+uploads/*.png
+uploads/*.webp
+outputs/*/
+test_*.jpg
+test_*.png
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# Poetry
+poetry.lock
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.next/
+frontend/coverage/
+frontend/.nyc_output/
+frontend/.cache/
+
+# Keep important files
+!models/ai-vs-human-image-detector/config.json
+!models/ai-vs-human-image-detector/config_fixed.json
+!models/ai-vs-human-image-detector/preprocessor_config.json
+!models/ai-vs-human-image-detector/README.md
+!uploads/.gitkeep
+!outputs/.gitkeep
