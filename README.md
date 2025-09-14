@@ -415,8 +415,6 @@ For detailed technical analysis, methodology, and experimental results, see [`IE
 - [React](https://github.com/facebook/react)
 - [FastAPI](https://github.com/tiangolo/fastapi)
 
----
-
 **Ready to analyze your images? Start with `python setup_project.py` and explore the power of AI-driven image analysis! 🚀✨**
 
 ---
