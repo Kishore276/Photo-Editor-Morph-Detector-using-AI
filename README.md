@@ -418,3 +418,12 @@ For detailed technical analysis, methodology, and experimental results, see [`IE
 ---
 
 **Ready to analyze your images? Start with `python setup_project.py` and explore the power of AI-driven image analysis! 🚀✨**
+
+---
+
+Star⭐ this repo if you found it helpful!
+
+**🎓 Empowering students across India with intelligent, multilingual college guidance!**
+
+*Built with ❤️ for the future of Indian engineering education*
+
