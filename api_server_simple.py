@@ -86,9 +86,12 @@ print("🔄 Initializing working Ateeqq detector...")
 if AI_DETECTOR_AVAILABLE:
     try:
         print("📥 Loading working Ateeqq detector (using real model)...")
-        ai_detector = AteeqqFinalWorking()
+        # Use threshold=0.95 for VERY strict detection (avoid false positives)
+        # Only flag images as AI if model is >95% confident
+        ai_detector = AteeqqFinalWorking(ai_threshold=0.95)
         if hasattr(ai_detector, 'model_loaded') and ai_detector.model_loaded:
             print("✅ Working Ateeqq detector initialized successfully!")
+            print(f"   AI Detection Threshold: 95% (very strict - favors real photos)")
         else:
             print("⚠️  Ateeqq detector failed to load, using simulation")
             ai_detector = None
@@ -473,13 +476,13 @@ async def health_check():
 if __name__ == "__main__":
     import uvicorn
     print("🚀 Starting Simple Image Prep API")
-    print("📍 Backend will be available at: http://localhost:8000")
-    print("📖 API docs will be available at: http://localhost:8000/docs")
+    print("📍 Backend will be available at: http://localhost:8001")
+    print("📖 API docs will be available at: http://localhost:8001/docs")
 
     uvicorn.run(
-        "api_server_simple:app",
+        app,  # Use app directly instead of string to avoid reload issues
         host="0.0.0.0",
-        port=8000,
-        reload=True,
+        port=8001,
+        reload=False,  # Disable reload to avoid multiprocessing issues
         log_level="info"
     )
