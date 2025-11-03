@@ -18,13 +18,25 @@ logger = logging.getLogger(__name__)
 class AteeqqFinalWorking:
     """Ateeqq Final Working detector using the downloaded model with config fix."""
 
-    def __init__(self):
+    def __init__(self, ai_threshold=0.90):
+        """
+        Initialize the detector.
+        
+        Args:
+            ai_threshold (float): Confidence threshold for AI detection (0.0-1.0)
+                - 0.90 (default): Very strict - only flag obvious AI images
+                - 0.85: Strict - balanced false positives vs false negatives
+                - 0.75: Moderate - more sensitive to AI characteristics
+                - 0.65: Sensitive - flag more images as potentially AI
+        """
         self.name = "Ateeqq Final Working"
         self.model_id = "Ateeqq/ai-vs-human-image-detector"
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.model_loaded = False
+        self.ai_threshold = ai_threshold  # Configurable threshold
         
         logger.info("🎯 Loading Ateeqq model from downloaded files...")
+        logger.info(f"⚙️  AI Detection Threshold: {ai_threshold:.2f} (higher = stricter)")
         self._load_ateeqq_from_cache()
 
     def _load_ateeqq_from_cache(self):
@@ -116,24 +128,30 @@ class AteeqqFinalWorking:
                 outputs = self.model(**inputs)
                 probs = torch.softmax(outputs.logits, dim=1)
                 
-                # FIXED: According to config: 0='ai', 1='hum'
+                # Get raw probabilities for both classes
                 ai_prob = probs[0][0].item()     # Class 0: ai
                 human_prob = probs[0][1].item()  # Class 1: hum
                 
-                # Much more conservative thresholds - strongly bias towards human
-                if human_prob > 0.4:  # Lower threshold for human detection
-                    pred = 1
-                    confidence = human_prob
-                    label = "human"
-                elif ai_prob > 0.75:  # Much higher threshold for AI detection
+                # Use configurable threshold (default 0.90 for very strict detection)
+                AI_THRESHOLD = self.ai_threshold
+                
+                if ai_prob >= AI_THRESHOLD:
+                    # Strong evidence of AI generation
                     pred = 0
                     confidence = ai_prob
                     label = "ai"
-                else:
-                    # When uncertain, always default to human
+                elif human_prob >= AI_THRESHOLD:
+                    # Strong evidence of human/real photo
                     pred = 1
-                    confidence = max(human_prob, 0.6)  # Give decent confidence to human
+                    confidence = human_prob
                     label = "human"
+                else:
+                    # Uncertain - default to human (real photo) to avoid false positives
+                    # Most real photos should not be flagged as AI
+                    pred = 1
+                    confidence = max(human_prob, 0.6)  # Give at least medium confidence
+                    label = "human"
+                    logger.info(f"⚠️  Uncertain prediction (threshold={AI_THRESHOLD:.2f}) - defaulting to human")
                 
                 logger.info(f"🎯 Ateeqq prediction: {label} ({confidence:.3f})")
                 logger.info(f"🔍 Raw probabilities: ai={ai_prob:.3f}, human={human_prob:.3f}")
